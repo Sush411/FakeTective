@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link id="favicon" rel="icon" href="/static/icons/review_icon.png"> <!-- Default Favicon -->
+    <title>Prediction Result</title>
+</head>
+<body>
+    <header>
+        <h1><img src="/static/icons/review_icon.png" alt="Review Icon" class="icon"> Prediction Result</h1>
+        <nav>
+            <a href="/" data-icon="/static/icons/home_icon.png">Home</a>
+            <a href="/submit_review" data-icon="/static/icons/review_icon.png">Submit Review</a>
+            <a href="/statistics" data-icon="/static/icons/statistics_icon.png">Statistics</a>
+            <a href="/about" data-icon="/static/icons/about_icon.png">About</a>
+        </nav>                
+    </header>
+    <main>
+        <h2>The review is predicted to be: <span>{{ prediction }}</span></h2>
+        <img src="/static/gifs/{{ gif }}" alt="Result GIF">
+        <a href="/submit_review">Analyze Another Review</a>
+    </main>
+    <footer>
+        <p><em>"Spot the Fake, Trust the Real."</em></p>
+    </footer>    
+</body>
+</html>
+

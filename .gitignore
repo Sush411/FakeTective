@@ -1,0 +1,12 @@
+# Ignore model files
+model/
+# Ignore static files
+static/icons/
+static/images/
+static/gifs/
+
+# Ignore Jupyter notebook checkpoints
+**/.ipynb_checkpoints/
+
+# Ignore .joblib files
+*.joblib

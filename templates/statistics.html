@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link id="favicon" rel="icon" href="/static/icons/statistics_icon.png"> <!-- Default Favicon -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Review Statistics</title>
+</head>
+<body>
+    <header>
+        <h1><img src="/static/icons/statistics_icon.png" alt="Statistics Icon" class="icon"> Review Statistics</h1>
+        <nav>
+            <a href="/" data-icon="/static/icons/home_icon.png">Home</a>
+            <a href="/submit_review" data-icon="/static/icons/review_icon.png">Submit Review</a>
+            <a href="/statistics" data-icon="/static/icons/statistics_icon.png">Statistics</a>
+            <a href="/about" data-icon="/static/icons/about_icon.png">About</a>
+        </nav>        
+    </header>
+    <main>
+        <p>Total Reviews Analyzed: {{ stats['total_reviews'] }}</p>
+        <p>Fake Reviews: {{ stats['fake_reviews'] }}</p>
+        <p>Real Reviews: {{ stats['real_reviews'] }}</p>
+
+        <!-- Pie Chart for Fake vs Real Reviews -->
+        <canvas id="pieChart" width="300" height="300"></canvas>
+
+        <!-- Bar Chart for Detailed Statistics -->
+        <canvas id="barChart" width="300" height="300"></canvas>
+    </main>
+
+    <script>
+        // Pie chart for Fake vs Real Reviews
+        const pieData = {
+            labels: ['Real Reviews', 'Fake Reviews'],
+            datasets: [{
+                data: [{{ stats['real_reviews'] }}, {{ stats['fake_reviews'] }}],
+                backgroundColor: ['#36A2EB', '#FF6384']
+            }]
+        };
+
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        new Chart(pieCtx, {
+            type: 'pie',
+            data: pieData
+        });
+
+        // Bar chart for detailed statistics
+        const barData = {
+            labels: ['Real Reviews', 'Fake Reviews'],
+            datasets: [{
+                label: 'Review Counts',
+                data: [{{ stats['real_reviews'] }}, {{ stats['fake_reviews'] }}],
+                backgroundColor: '#4BC0C0'
+            }]
+        };
+
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        new Chart(barCtx, {
+            type: 'bar',
+            data: barData
+        });
+    </script>
+    <footer>
+        <p><em>"Spot the Fake, Trust the Real."</em></p>
+    </footer>
+</body>
+</html>
+
+
+
